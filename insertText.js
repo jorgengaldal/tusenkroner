@@ -2,7 +2,7 @@ import { convertNumberWithComma, convertNumber } from "./number2text.js"
 
 const TABLE_URL = "https://data.ssb.no/api/v0/no/table/08981"
 
-const REFERANSE_SPR_VERDI = 10_000
+const REFERANSE_SPR_VERDI = 1_000
 
 function hentNyesteVerdi() {
     // Henter nyeste verdi fra månedsverdi (se spørring i "SSB-query - nyeste.json")
