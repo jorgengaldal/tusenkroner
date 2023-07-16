@@ -52,56 +52,57 @@ export function convertNumberWithComma(num) {
 }
 
 export function convertNumber(num) {
-    let result = "";
+    const result = [];
 
     let thousands = 0;
     while (num != 0) {
         let lastThreeDigits = num % 1000;
         let iterationDigits = convertNumberUnderThousand(lastThreeDigits)
-        result =
-            (iterationDigits == "en" && thousands == 1 ? "et" : iterationDigits) + // "ett" foran tusen i stedet for "en"
-            storeTallNavn[thousands * 1000] + // tusen/million/milliard/osv.
-            (thousands == 1 && !result.includes("hundre") ? "og" : "") + // tusenogtjueseks i stedet for tusentjueseks.
-        result;
+        
+        result.splice(0, 0, (thousands == 1 && !result.includes("hundre") ? "og" : "")) // tusenogtjueseks i stedet for tusentjueseks.
+        result.splice(0, 0, storeTallNavn[thousands * 1000]) // tusen/million/milliard/osv.
+        result.splice(0, 0, (iterationDigits == "en" && thousands == 1 ? "et" : iterationDigits)) // "ett" foran tusen i stedet for "en"
+
         thousands += 1;
         num = Math.floor(num / 1000);
     }
 
-    return result;
+    return result.join("\xAD");
 }
 
 function convertNumberUnderThousand(num) {
     let useOg = false;
-    let result = "";
+    const result = [];
     if (num == 0) {
         return sifferNavn[0];
     }
     if (num >= 200) {
-        result += sifferNavn[Math.trunc(num / 100)];
-        result += storeTallNavn[100];
+        result.splice(result.length, 0, sifferNavn[Math.trunc(num / 100)])
+        result.splice(result.length, 0, storeTallNavn[100])
     } else if (num >= 100) {
-        result += "ett" + storeTallNavn[100];
+        result.splice(result.length, 0, "ett")
+        result.splice(result.length, 0, storeTallNavn[100])
     }
     if (num >= 101) {
         useOg = true;
     }
     num = num % 100;
     if (num == 0) {
-        return result;
+        return result.join("\xAD");
     }
     if (useOg) {
-        result += "og";
+        result.splice(result.length, 0, "og")
     }
     if (num < 20) {
-        result += sifferNavn[num];
+        result.splice(result.length, 0, sifferNavn[num])
     } else {
-        result += tierNavn[Math.trunc(num / 10)];
+        result.splice(result.length, 0, tierNavn[Math.trunc(num / 10)])
         num = num % 10;
         if (num == 0) {
-            return result;
+            return result.join("\xAD");
         }
-        result += sifferNavn[num];
+        result.splice(result.length, 0, sifferNavn[num])
     }
 
-    return result;
+    return result.join("\xAD");
 }
