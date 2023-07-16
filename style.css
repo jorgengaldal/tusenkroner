@@ -20,7 +20,25 @@ body {
     
 }
 
-#wrapper {
+:link {
+    color: inherit;
+    text-decoration: none;
+}
+
+:link:visited {
+    color: #b4bfbf;
+}
+
+:link:hover, :link:focus-visible {
+    color: #a5a5a5;
+    outline: none;
+}
+
+:link:active {
+    color: #7986a3;
+}
+
+#content-wrapper {
     width: 60%;
     display: flex;
     justify-content: center;

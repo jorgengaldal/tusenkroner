@@ -53,14 +53,6 @@ export function convertNumberWithComma(num) {
 
 export function convertNumber(num) {
     let result = "";
-    // let numLength = Math.log(number) * Math.LOG10E + 1 | 0
-
-    // numOfFullBlocks = Math.floor(numLength / 3)
-    // numInFirstBlock = numLength % 3
-
-    // if (numInFirstBlock != 0) {
-    //     convertNumberUnderThousand(
-    // }
 
     let thousands = 0;
     while (num != 0) {
@@ -113,7 +105,3 @@ function convertNumberUnderThousand(num) {
 
     return result;
 }
-
-// for (let i = 0; i < 12000; i += 9) {
-//     console.log(convertNumber(i));
-// }
