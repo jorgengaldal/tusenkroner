@@ -42,6 +42,11 @@ body {
     width: 100%
 }
 
+#xkroneritall {
+    font-size: 2em;
+    margin-top: -0.5em;
+}
+
 footer {
     position: fixed;
     bottom: 0;

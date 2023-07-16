@@ -1,0 +1,10 @@
+{
+  "queryObj": {
+    "query": [
+      { "code": "Maaned", "selection": { "filter": "all", "values": ["*"] } },
+      { "code": "Tid", "selection": { "filter": "top", "values": ["1"] } }
+    ],
+    "response": { "format": "json-stat2" }
+  },
+  "tableIdForQuery": "08981"
+}
