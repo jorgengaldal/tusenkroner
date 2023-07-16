@@ -16,6 +16,10 @@ body {
     font-family: 'Roboto', sans-serif;
 }
 
+p {
+    text-align: center;
+}
+
 :link {
     color: inherit;
     text-decoration: none;
@@ -58,7 +62,7 @@ body {
 }
 
 #info-wrapper {
-    height: 100vh;
+    min-height: 100vh;
     width: 64vw;
     display: flex;
     justify-content: flex-start;
@@ -130,3 +134,17 @@ footer p {
     margin: 0;
 }
 
+
+@media screen and (max-width: 600px) {
+    #xkronersspørsmålet {
+        font-size: 2em;
+    }
+
+    #xkroneritall {
+        font-size: 1.5em;
+    }
+
+    #info-wrapper {
+        width: 92vw;
+    }
+  }
