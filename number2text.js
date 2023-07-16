@@ -59,7 +59,7 @@ export function convertNumber(num) {
         let lastThreeDigits = num % 1000;
         let iterationDigits = convertNumberUnderThousand(lastThreeDigits)
         
-        result.splice(0, 0, (thousands == 1 && !result.includes("hundre") ? "og" : "")) // tusenogtjueseks i stedet for tusentjueseks.
+        result.splice(0, 0, (thousands == 1 && !result[0].includes("hundre") ? "og" : "")) // tusenogtjueseks i stedet for tusentjueseks.
         result.splice(0, 0, storeTallNavn[thousands * 1000]) // tusen/million/milliard/osv.
         result.splice(0, 0, (iterationDigits == "en" && thousands == 1 ? "et" : iterationDigits)) // "ett" foran tusen i stedet for "en"
 
