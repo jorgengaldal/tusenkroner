@@ -20,7 +20,13 @@ function hentNyesteVerdi() {
         }
 
     }).then((response) => response.json()).then((result) => {
-        return result.value[new Date(Date.now()).getMonth()] 
+        let latestValue = null;
+        for (let mnthVal of result.value) {
+            if (mnthVal !== null) {
+                latestValue = mnthVal
+            }
+        }
+        return latestValue;
     })
 }
 
@@ -47,9 +53,16 @@ function hentReferanseVerdi() {
 hentNyesteVerdi().then(nyesteVerdi => {
     hentReferanseVerdi().then(refVerdi => {
 
-        let resultatVerdi = ((nyesteVerdi / refVerdi) * REFERANSE_SPR_VERDI).toFixed(2)
         let hovedtekst = document.getElementById("xkronersspørsmålet")
         let talltekst = document.getElementById("xkroneritall")
+
+        if (nyesteVerdi == null) {
+            hovedtekst.textContent = "[Klarte ikke å hente indeksdata fra SSB]"
+            talltekst.textContent = "Prøv igjen senere..."
+            return;
+        }
+
+        let resultatVerdi = ((nyesteVerdi / refVerdi) * REFERANSE_SPR_VERDI).toFixed(2)
 
         talltekst.textContent = ("(" + String(resultatVerdi) + " kr)").replace(".", ",")
         hovedtekst.textContent = convertNumberWithComma(resultatVerdi) + "kronersspørsmålet"
