@@ -48,7 +48,13 @@ export function convertNumberWithComma(num) {
     let beforeComma = parseInt(numberStrings[0]);
     let afterComma = parseInt(numberStrings[1]);
 
-    return convertNumber(beforeComma) + "komma" + convertNumber(afterComma);
+    if (afterComma != 0) {
+        return convertNumber(beforeComma) + "komma" + convertNumber(afterComma)
+    }
+    else {
+        return convertNumber(beforeComma)
+    }
+
 }
 
 export function convertNumber(num) {
