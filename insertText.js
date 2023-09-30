@@ -32,6 +32,10 @@ function hentNyesteVerdi() {
 
 function hentReferanseVerdi() {
     // Henter månedsverdi fra august 1961 (se spørring i "SSB-query - aug1961.json")
+    /* 
+    Grunnen til at denne manuelt hentes ut hver gang er delvis i tilfelle referanseverdien for 100
+    endrer seg (sist gjort i 2015) og delvis grunnet latskap
+    */
     return fetch(TABLE_URL, {
         method: 'POST',
         body: JSON.stringify({
